@@ -12,8 +12,6 @@ export const Column = ({ id, text }: ColumnProps) => {
   const { getTasksByListId } = useAppState();
   const tasks = getTasksByListId(id);
 
-  console.log(tasks);
-
   return (
     <ColumnContainer>
       <ColumnTitle>{text}</ColumnTitle>

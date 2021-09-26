@@ -5,6 +5,4 @@ type CardProps = {
   text: string
 }
 
-export const Card = ({ text }: CardProps) => {
-  return <CardContainer>{text}</CardContainer>
-}
+export const Card = ({ text }: CardProps) => <CardContainer>{text}</CardContainer>;
