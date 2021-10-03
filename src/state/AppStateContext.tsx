@@ -69,8 +69,6 @@ export const appData: AppState = {
 
 const AppStateContext = createContext<AppStateContextProps>({} as AppStateContextProps);
 
-export const useAppState = () => useContext(AppStateContext);
-
 export const AppStateProvider: FC = ({ children }) => {
   const [state, dispatch] = useImmerReducer(appStateReducer, appData);
   const { lists, draggedItem } = state;
@@ -83,3 +81,5 @@ export const AppStateProvider: FC = ({ children }) => {
     </AppStateContext.Provider>
   )
 }
+
+export const useAppState = () => useContext(AppStateContext);

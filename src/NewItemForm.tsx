@@ -1,17 +1,24 @@
-import {useState} from "react";
-import {NewItemButton, NewItemFormContainer, NewItemInput } from "./styles";
-import { useFocus } from "./useFocus";
+import { useState, KeyboardEvent } from "react"
+import { useFocus } from "./utils/useFocus"
+import {
+  NewItemFormContainer,
+  NewItemButton,
+  NewItemInput
+} from "./styles"
 
 type NewItemFormProps = {
-  onAdd(text: string): void,
+  onAdd(text: string): void
 }
 
 export const NewItemForm = ({ onAdd }: NewItemFormProps) => {
-  const [text, setText] = useState('');
-  const inputRef = useFocus();
-  const handleAddText = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      onAdd(text);
+  const [text, setText] = useState("")
+  const inputRef = useFocus()
+
+  const handleAddText = (
+    event: KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Enter") {
+      onAdd(text)
     }
   }
 
@@ -20,7 +27,7 @@ export const NewItemForm = ({ onAdd }: NewItemFormProps) => {
       <NewItemInput
         ref={inputRef}
         value={text}
-        onChange={({ target }) => setText(target.value)}
+        onChange={(e) => setText(e.target.value)}
         onKeyPress={handleAddText}
       />
       <NewItemButton onClick={() => onAdd(text)}>
